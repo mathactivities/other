@@ -1,0 +1,19 @@
+{
+  "name": "edit_json_file_with_nodejs",
+  "version": "1.0.0",
+  "description": "edit json files with node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "url": "^0.11.4"
+  },
+  "keywords": []
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const json = {
+            name: 'Alice',
+            age: 30,
+        };
+
+        // 1. Convert JSON to string
+        const jsonString = JSON.stringify(json);
+
+        // 2. Encode string to Base64
+        const base64String = btoa(jsonString);
+        console.log(base64String)
+
+        // 3. URL-encode the Base64 string
+        const urlEncodedString = encodeURIComponent(base64String);
+        console.log(encodeURIComponent(btoa(JSON.stringify(json))))
+
+        //DECODE
+        console.log("Encoded DATA", decodeURIComponent(urlEncodedString))
+        console.log("DEcoded base64", atob(decodeURIComponent(urlEncodedString)))
+        console.log("json", JSON.parse(atob(decodeURIComponent(urlEncodedString))))
+        const uid = 'nice'; // Example UID
+        const data = { name: 'John Doe', age: 30, items: [1,2,3] }; // Example localStorage data
+
+        // Convert data to JSON string
+        const dataString = JSON.stringify(data);
+
+        const url = `http://localhost:3000/?uid=${uid}&data=${encodeURIComponent(dataString)}`;
+
+        fetch(url)
+        .then(response => response.text())
+        .then(message => console.log(message))
+        .catch(error => console.log('Error:', error));
+    </script>
+</body>
+</html>
