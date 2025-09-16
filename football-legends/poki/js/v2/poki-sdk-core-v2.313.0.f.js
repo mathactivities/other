@@ -6498,16 +6498,17 @@
                                 if (c === n.Z.ads.position.rewarded || this.adTimings.requestPossible())
                                     if (c !== n.Z.ads.position.rewarded && this.adSettings.countryExclusion.includes(h.Z.country))
                                         y.dispatchEvent(n.Z.ads.limit, {
-                                            reason: n.Z.info.messages.disabled
+                                            reason: "because i don't want to"
                                         });
                                     else {
                                         var A = It(It(It({}, this.genericCriteria()), this.criteria), {
                                             position: c,
                                             ab: Math.round(Math.random()).toString()
                                         });
-                                        this.playerSkin.show(),
-                                        this.resize(),
-                                        this.waterfall.start(A, c)
+                                        y.dispatchEvent(n.Z.ads.limit, {
+                                            reason: n.Z.info.messages.prerollLimit
+                                        });
+                                        
                                     }
                                 else
                                     y.dispatchEvent(n.Z.ads.limit, {
@@ -7106,7 +7107,7 @@
                         t.monetization.requestAd({
                             position: r,
                             onFinish: function(e) {
-                                e.length > 0 ? i(!!e[0].rewardAllowed) : i(!1)
+                                true
                             },
                             onStart: e
                         })
@@ -7115,24 +7116,7 @@
                 }
                 ,
                 this.displayAd = function(e, i, r, o) {
-                    y.clearAnnotations();
-                    var a = se();
-                    L.track(n.Z.tracking.screen.displayAd, {
-                        size: i,
-                        opportunityId: a,
-                        duringGameplay: t.duringGameplay
-                    });
-                    var s = {
-                        container: e,
-                        opportunityId: a,
-                        size: i,
-                        duringGameplay: function() {
-                            return t.duringGameplay
-                        },
-                        onCanDestroy: r,
-                        onDisplayRendered: o
-                    };
-                    t.monetization.displayAd(s)
+                    
                 }
                 ,
                 this.isAdBlocked = function() {
